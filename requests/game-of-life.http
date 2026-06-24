@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:5088
+@boardId = replace-after-create
+
+### Health check
+GET {{baseUrl}}/health
+
+### Create board: blinker
+POST {{baseUrl}}/boards
+Content-Type: application/json
+
+{
+  "cells": [
+    [false, false, false],
+    [true, true, true],
+    [false, false, false]
+  ]
+}
+
+### Get uploaded board
+GET {{baseUrl}}/boards/{{boardId}}
+
+### Get next generation
+GET {{baseUrl}}/boards/{{boardId}}/generations/1
+
+### Get generation two
+GET {{baseUrl}}/boards/{{boardId}}/generations/2
+
+### Get conclusion
+GET {{baseUrl}}/boards/{{boardId}}/conclusion?maxAttempts=10
+
+### Invalid board: jagged matrix
+POST {{baseUrl}}/boards
+Content-Type: application/json
+
+{
+  "cells": [
+    [true, false],
+    [true]
+  ]
+}
+

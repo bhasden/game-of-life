@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+TestResults/
+*.user
+*.suo
+data/
